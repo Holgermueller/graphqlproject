@@ -69,6 +69,17 @@ export default class From extends Component {
           />
           <input type="submit" value="submit" onClick={this.handleSubmit} />
         </form>
+
+        <hr />
+
+        <div>
+          <h4>Data display</h4>
+          <div>
+            <h6>{this.state.username}</h6>
+            <h6>{this.state.email}</h6>
+            <h6>{this.state.password}</h6>
+          </div>
+        </div>
       </div>
     );
   }
