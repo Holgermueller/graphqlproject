@@ -10,17 +10,24 @@ export default class App extends Component {
     this.state = {
       receivedData: {},
     };
+
+    this.receiveDataFromForm = this.receiveDataFromForm.bind(this);
   }
 
-  receiveDataFromForm(dataFromForm) {
-    this.setState({ receivedData: dataFromForm });
+  receiveDataFromForm(value) {
+    return () => {
+      this.setState({
+        receivedData: value,
+      });
+      console.log(this.state.receivedData);
+    };
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">Learning testing app</header>
-        <Form />
+        <Form receiveDataFromForm={this.receiveDataFromForm.bind(this)} />
         <InfoDisplay />
       </div>
     );

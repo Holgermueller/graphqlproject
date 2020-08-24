@@ -27,12 +27,12 @@ export default class From extends Component {
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    console.log(this.state);
-    this.clearForm();
-  };
+  //   this.props.receiveDataFromForm();
+  //   this.clearForm();
+  // };
 
   clearForm = (e) => {
     this.setState({
@@ -67,7 +67,11 @@ export default class From extends Component {
             placeholder="Password"
             onChange={this.handleChange}
           />
-          <input type="submit" value="submit" onClick={this.handleSubmit} />
+          <input
+            type="submit"
+            value="submit"
+            onClick={this.props.receiveDataFromForm(this.state)}
+          />
         </form>
 
         <hr />
