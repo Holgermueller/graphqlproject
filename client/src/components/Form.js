@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createPost } from "../redux/actions/Actions";
 
 const form = {
   marginTop: "7%",
@@ -8,17 +11,17 @@ const form = {
   display: "flex",
 };
 
-export default class From extends Component {
+class PostForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
-      email: "",
-      password: "",
+      title: "",
+      body: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -27,39 +30,46 @@ export default class From extends Component {
     });
   };
 
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const post = {
+      title: this.state.title,
+      body: this.state.body,
+    };
+
+    this.props.createPost(post);
+
+    this.clearForm();
+  };
+
   clearForm = (e) => {
     this.setState({
-      username: "",
-      email: "",
-      password: "",
+      title: "",
+      body: "",
     });
   };
 
   render() {
     return (
       <div>
-        <form style={form}>
+        <form style={form} onSubmit={this.onSubmit}>
           <input
-            id="username"
-            value={this.state.username}
+            id="title"
+            value={this.state.title}
             type="text"
-            placeholder="Username"
+            placeholder="Title"
             onChange={this.handleChange}
           />
-          <input
-            id="email"
-            value={this.state.email}
-            type="email"
-            placeholder="Email"
+          <br />
+          <textarea
+            name="body"
+            id="body"
+            value={this.state.body}
             onChange={this.handleChange}
+            placeholder="Body"
           />
-          <input
-            id="password"
-            value={this.state.password}
-            type="text"
-            placeholder="Password"
-            onChange={this.handleChange}
-          />
+
           <input type="submit" value="submit" />
         </form>
 
@@ -68,3 +78,9 @@ export default class From extends Component {
     );
   }
 }
+
+PostForm.propTypes = {
+  createPost: PropTypes.func.isRequired,
+};
+
+export default connect(null, { createPost })(PostForm);
