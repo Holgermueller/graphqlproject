@@ -27,13 +27,6 @@ export default class From extends Component {
     });
   };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   this.props.receiveDataFromForm();
-  //   this.clearForm();
-  // };
-
   clearForm = (e) => {
     this.setState({
       username: "",
@@ -67,11 +60,7 @@ export default class From extends Component {
             placeholder="Password"
             onChange={this.handleChange}
           />
-          <input
-            type="submit"
-            value="submit"
-            onClick={this.props.receiveDataFromForm(this.state)}
-          />
+          <input type="submit" value="submit" />
         </form>
 
         <hr />

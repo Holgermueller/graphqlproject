@@ -2,34 +2,19 @@ import React, { Component } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import InfoDisplay from "./components/InfoDisplay";
+import { Provider } from "react-redux";
+import store from "./store";
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      receivedData: {},
-    };
-
-    this.receiveDataFromForm = this.receiveDataFromForm.bind(this);
-  }
-
-  receiveDataFromForm(value) {
-    return () => {
-      this.setState({
-        receivedData: value,
-      });
-      console.log(this.state.receivedData);
-    };
-  }
-
   render() {
     return (
-      <div className="App">
-        <header className="App-header">Learning testing app</header>
-        <Form receiveDataFromForm={this.receiveDataFromForm.bind(this)} />
-        <InfoDisplay />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <header className="App-header">Learning testing app</header>
+          <Form />
+          <InfoDisplay />
+        </div>
+      </Provider>
     );
   }
 }
