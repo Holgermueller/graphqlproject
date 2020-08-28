@@ -61,7 +61,7 @@ class PostForm extends Component {
             placeholder="Title"
             onChange={this.handleChange}
           />
-          <br />
+
           <textarea
             name="body"
             id="body"

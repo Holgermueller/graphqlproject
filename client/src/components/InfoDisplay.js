@@ -4,19 +4,19 @@ import { connect } from "react-redux";
 import { fetchPosts } from "../redux/actions/Actions";
 
 class Posts extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchPosts();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (nextProps.newPost) {
       this.props.posts.unshift(nextProps.newPost);
     }
   }
 
   render() {
-    const postItems = this.props.posts.map((post) => (
-      <div key={post.id}>
+    const postItems = this.props.posts.map((post, i) => (
+      <div key={i}>
         <h3>{post.title}</h3>
         <p>{post.body} </p>
       </div>

@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <header className="App-header">Learning testing app</header>
+          <header className="App-header">Learning redux and testing app</header>
           <Form />
           <InfoDisplay />
         </div>
