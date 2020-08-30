@@ -1,10 +1,8 @@
-test("should call handleChange", () => {
-  const handleChangeMock = jest.fn();
+import React from "react";
+import { shallow, mount, render } from "enzyme";
+import Form from "./Form";
+import renderer from "react-test-renderer";
 
-  const e = {
-    preventDefault() {},
-    target: { value: "body" },
-  };
-
-  expect(handleChangeMock).toBeCalledWith("body");
+it("should render without throwing an error", () => {
+  shallow(<Form />);
 });
