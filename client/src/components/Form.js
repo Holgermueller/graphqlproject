@@ -55,6 +55,7 @@ class PostForm extends Component {
       <div>
         <form style={form} onSubmit={this.onSubmit}>
           <input
+            name="titleInput"
             id="title"
             value={this.state.title}
             type="text"
@@ -63,14 +64,14 @@ class PostForm extends Component {
           />
 
           <textarea
-            name="body"
+            name="bodyInput"
             id="body"
             value={this.state.body}
             onChange={this.handleChange}
             placeholder="Body"
           />
 
-          <input type="submit" value="submit" />
+          <input name="submit" type="submit" value="submit" />
         </form>
 
         <hr />
