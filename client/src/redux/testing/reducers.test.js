@@ -13,25 +13,16 @@ describe("post reducer", () => {
 
   it("should handle NEW_POST", () => {
     expect(
-      reducer(
-        {},
-        {
-          type: types.NEW_POST,
-          item: {
-            title: "blah",
-            body: "blabblbabalbalba",
-          },
-        }
-      )
-    ).toEqual({
-      posts: {
-        item: {
-          title: "blah",
-          body: "blabblbabalbalba",
-          id: 0,
-        },
-        items: [],
+      reducer([], {
+        type: types.NEW_POST,
+        payload: "New post",
+      })
+    ).toEqual([
+      {
+        title: "hiohoeh",
+        body: "ieowfeaoihe",
+        id: 0,
       },
-    });
+    ]);
   });
 });
