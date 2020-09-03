@@ -9,7 +9,7 @@ describe("actions", () => {
     };
 
     const expectedAction = {
-      type: actions.NEW_POST,
+      type: types.NEW_POST,
       payload,
     };
     expect(actions.createPost(payload)).toEqual(expectedAction);
